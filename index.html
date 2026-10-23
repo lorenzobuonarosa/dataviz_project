@@ -3,71 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Imprese nelle province italiane</title>
-<link rel="stylesheet" href="css/theme.css">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/dashboard.css">
-<script src="js/dash-runtime.js"></script>
+<title>Progetti di data visualization</title>
+<style>
+:root{--fg:#1c1c1c;--muted:#5f6368;--bg:#ffffff;--panel:#f6f6f4;--line:#dcdcd8;--accent:#2a6fdb}
+@media (prefers-color-scheme: dark){:root{--fg:#ececec;--muted:#a3a3a3;--bg:#161616;--panel:#1f1f1f;--line:#343434;--accent:#6ea2f5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5}
+main{max-width:56rem;margin:0 auto;padding:2.5rem 1rem}
+h1{font-size:clamp(1.75rem,4vw,2.5rem);letter-spacing:-0.015em;margin:0 0 .25rem}
+.sub{color:var(--muted);margin:0 0 2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.card{display:block;height:100%;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:8px;color:inherit;text-decoration:none}
+.card:hover{border-color:var(--accent)}
+.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card h2{font-size:1.125rem;margin:0 0 .25rem}
+.card p{margin:0;color:var(--muted);font-size:.9rem}
+</style>
 </head>
 <body>
-<div id="dash-root">
-
-<div class="pv" id="pv">
-  <header id="intestazione">
-    <h1 class="pv-title">Imprese nelle province italiane</h1>
-    <p class="pv-take" id="pv-take"></p>
-  </header>
-
-  <section class="pv-filters" id="filtri" aria-label="Filtri" data-source="imprese_province">
-    <label class="pv-field"><span class="pv-lab">Anno</span><select class="pv-select" id="f-anno"></select></label>
-    <div class="pv-field"><span class="pv-lab">Settore</span><div class="pv-chips" id="f-settori" role="group" aria-label="Settore"></div></div>
-    <div class="pv-field"><span class="pv-lab">Dimensione impresa</span><div class="pv-chips" id="f-dimensioni" role="group" aria-label="Dimensione impresa"></div></div>
-    <div class="pv-field"><span class="pv-lab">Macroarea</span><div class="pv-chips" id="f-macroaree" role="group" aria-label="Macroarea"></div></div>
-    <label class="pv-field"><span class="pv-lab">Metrica sulla mappa</span><select class="pv-select" id="f-metrica"></select></label>
-    <button class="pv-btn" id="f-reset" type="button">Reimposta filtri</button>
-  </section>
-
-  <section class="pv-kpis" id="kpi" aria-label="Indicatori" data-source="imprese_province">
-    <div class="pv-kpi" id="kpi-1"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
-    <div class="pv-kpi" id="kpi-2"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
-    <div class="pv-kpi" id="kpi-3"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
-    <div class="pv-kpi" id="kpi-4"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
-  </section>
-
-  <div class="pv-main">
-    <section class="pv-card pv-map-card" id="mappa">
-      <h2 class="pv-h" id="map-title">Mappa provinciale</h2>
-      <p class="pv-sub" id="map-sub"></p>
-      <div class="pv-legend" id="legenda" aria-label="Legenda"></div>
-      <div class="pv-mapbox dash-skeleton" id="mapbox" data-source="confini_province imprese_province"></div>
-      <p class="pv-note" id="map-note"></p>
-    </section>
-
-    <aside class="pv-card pv-side" id="pannello" data-source="imprese_province">
-      <div class="pv-side-head">
-        <div><h2 class="pv-h" id="side-title">Provincia selezionata</h2><p class="pv-sub" id="side-sub"></p></div>
-        <button class="pv-x" id="side-clear" type="button" hidden>Deseleziona ×</button>
-      </div>
-      <div class="pv-empty" id="side-empty">Clicca una provincia sulla mappa o nella classifica per vederne l’andamento 2021–2025 e il confronto con la media nazionale, con i filtri attivi.</div>
-      <div id="side-body" hidden>
-        <div class="pv-key" id="side-key"></div>
-        <div class="pv-chartbox" id="side-chart"></div>
-        <div class="pv-sumgrid" id="side-sum"></div>
-      </div>
-    </aside>
-  </div>
-
-  <section class="pv-card" id="classifica" data-source="imprese_province">
-    <h2 class="pv-h" id="rk-title">Prime 10 province</h2>
-    <p class="pv-sub" id="rk-sub"></p>
-    <div class="pv-rank" id="rk-list"></div>
-  </section>
-</div>
-</div>
-
-<script src="js/vendor/d3.min.js"></script>
-<script src="js/vendor/topojson-client.min.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/embed.js"></script>
+<main>
+  <h1>Progetti di data visualization</h1>
+  <p class="sub">Dashboard e visualizzazioni interattive.</p>
+  <ul class="grid">
+    <!-- Per aggiungere un progetto: crea una cartella con il suo index.html e copia questo blocco <li>. -->
+    <li><a class="card" href="province/">
+      <h2>Imprese nelle province italiane</h2>
+      <p>Mappa, KPI e classifica per provincia, 2021–2025, con filtri per anno, settore, dimensione e macroarea.</p>
+    </a></li>
+  </ul>
+</main>
 </body>
 </html>

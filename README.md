@@ -1,8 +1,31 @@
-# Imprese nelle province italiane
+# Progetti di data visualization
+
+Un unico sito GitHub Pages con un progetto per cartella. Ogni cartella è un sottopercorso:
+
+```
+index.html                 pagina iniziale con l'elenco dei progetti
+province/                  Imprese nelle province italiane  →  .../dataviz_project/province/
+```
+
+## Aggiungere un progetto
+
+1. Crea una cartella (es. `nuovo-progetto/`) con il suo `index.html`. Nel progetto usa percorsi relativi (`css/stile.css`, non `/css/stile.css`), così funziona sotto qualsiasi sottopercorso.
+2. Aggiungi un blocco `<li>` con il link nell'elenco di `index.html`.
+3. Unisci le modifiche a `main`: GitHub Pages ripubblica il sito da solo.
+
+## Avvio in locale
+
+Le pagine caricano i dati con `fetch`, quindi serve un web server (con `file://` il browser blocca la richiesta). Dalla radice della repo:
+
+```
+python3 -m http.server 8000
+```
+
+poi apri http://localhost:8000.
+
+## province/ — Imprese nelle province italiane
 
 Dashboard interattiva (mappa coropletica, KPI, classifica, andamento 2021–2025) con filtri per anno, settore, dimensione d'impresa e macroarea.
-
-## Struttura
 
 ```
 index.html                       pagina (solo markup)
@@ -18,14 +41,4 @@ data/imprese_province.json       dati delle imprese per provincia
 data/limits_IT_provinces.json    confini provinciali in TopoJSON
 ```
 
-I confini sono agganciati ai dati tramite il codice ISTAT a 3 cifre (`prov_istat_code` nel TopoJSON, `cod_istat_prov` nel dataset).
-
-## Avvio in locale
-
-I dati sono caricati con `fetch`, quindi serve un web server (aprendo `index.html` con `file://` il browser blocca la richiesta):
-
-```
-python3 -m http.server 8000
-```
-
-poi apri http://localhost:8000. Il tema si può forzare con `?theme=dark`, `?theme=light` o `?theme=auto`.
+I confini sono agganciati ai dati tramite il codice ISTAT a 3 cifre (`prov_istat_code` nel TopoJSON, `cod_istat_prov` nel dataset). Il tema si può forzare con `?theme=dark`, `?theme=light` o `?theme=auto`.
