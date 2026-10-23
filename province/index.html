@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imprese nelle province italiane</title>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<script src="js/dash-runtime.js"></script>
+</head>
+<body>
+<div id="dash-root">
+
+<div class="pv" id="pv">
+  <header id="intestazione">
+    <h1 class="pv-title">Imprese nelle province italiane</h1>
+    <p class="pv-take" id="pv-take"></p>
+  </header>
+
+  <section class="pv-filters" id="filtri" aria-label="Filtri" data-source="imprese_province">
+    <label class="pv-field"><span class="pv-lab">Anno</span><select class="pv-select" id="f-anno"></select></label>
+    <div class="pv-field"><span class="pv-lab">Settore</span><div class="pv-chips" id="f-settori" role="group" aria-label="Settore"></div></div>
+    <div class="pv-field"><span class="pv-lab">Dimensione impresa</span><div class="pv-chips" id="f-dimensioni" role="group" aria-label="Dimensione impresa"></div></div>
+    <div class="pv-field"><span class="pv-lab">Macroarea</span><div class="pv-chips" id="f-macroaree" role="group" aria-label="Macroarea"></div></div>
+    <label class="pv-field"><span class="pv-lab">Metrica sulla mappa</span><select class="pv-select" id="f-metrica"></select></label>
+    <button class="pv-btn" id="f-reset" type="button">Reimposta filtri</button>
+  </section>
+
+  <section class="pv-kpis" id="kpi" aria-label="Indicatori" data-source="imprese_province">
+    <div class="pv-kpi" id="kpi-1"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
+    <div class="pv-kpi" id="kpi-2"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
+    <div class="pv-kpi" id="kpi-3"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
+    <div class="pv-kpi" id="kpi-4"><div class="pv-kpi-l"></div><div class="pv-kpi-v dash-skeleton"></div><div class="pv-kpi-s"></div></div>
+  </section>
+
+  <div class="pv-main">
+    <section class="pv-card pv-map-card" id="mappa">
+      <h2 class="pv-h" id="map-title">Mappa provinciale</h2>
+      <p class="pv-sub" id="map-sub"></p>
+      <div class="pv-legend" id="legenda" aria-label="Legenda"></div>
+      <div class="pv-mapbox dash-skeleton" id="mapbox" data-source="confini_province imprese_province"></div>
+      <p class="pv-note" id="map-note"></p>
+    </section>
+
+    <aside class="pv-card pv-side" id="pannello" data-source="imprese_province">
+      <div class="pv-side-head">
+        <div><h2 class="pv-h" id="side-title">Provincia selezionata</h2><p class="pv-sub" id="side-sub"></p></div>
+        <button class="pv-x" id="side-clear" type="button" hidden>Deseleziona ×</button>
+      </div>
+      <div class="pv-empty" id="side-empty">Clicca una provincia sulla mappa o nella classifica per vederne l’andamento 2021–2025 e il confronto con la media nazionale, con i filtri attivi.</div>
+      <div id="side-body" hidden>
+        <div class="pv-key" id="side-key"></div>
+        <div class="pv-chartbox" id="side-chart"></div>
+        <div class="pv-sumgrid" id="side-sum"></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="pv-card" id="classifica" data-source="imprese_province">
+    <h2 class="pv-h" id="rk-title">Prime 10 province</h2>
+    <p class="pv-sub" id="rk-sub"></p>
+    <div class="pv-rank" id="rk-list"></div>
+  </section>
+</div>
+</div>
+
+<script src="js/vendor/d3.min.js"></script>
+<script src="js/vendor/topojson-client.min.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/embed.js"></script>
+</body>
+</html>
